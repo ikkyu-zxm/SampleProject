@@ -8,8 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="sample-test" />
         <module name="sample-ftp" />
-        <module name="sample-base" />
         <module name="sample-eureka" />
+        <module name="sample-base" />
       </profile>
     </annotationProcessing>
   </component>

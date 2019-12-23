@@ -15,9 +15,9 @@ spring:
       naming:
         physical-strategy: base.xyz.ikkyu.util.UnderscoreNameCustomizer
     datasource:
-      url: jdbc:mysql://10.1.100.80:3306/supplier?createDatabaseIfNotExist=true&useSSL=false&characterEncoding=utf-8
+      url: jdbc:mysql://localhost:3306/test?createDatabaseIfNotExist=true&useSSL=false&characterEncoding=utf-8
       username: root
-      password: Cd1919*123 #wine@mysql #
+      password: root
       tomcat:
         max-active: 4
         max-idle: 2

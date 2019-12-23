@@ -1,0 +1,40 @@
+server:
+  port: ${PORT:80}
+#  port: ${PORT:50103}
+spring:
+  application:
+    name: local-test
+  jpa:
+    database: mysql
+    generate-ddl: true
+    open-in-view: false
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: base.xyz.ikkyu.util.UnderscoreNameCustomizer
+    datasource:
+      url: jdbc:mysql://10.1.100.80:3306/supplier?createDatabaseIfNotExist=true&useSSL=false&characterEncoding=utf-8
+      username: root
+      password: Cd1919*123 #wine@mysql #
+      tomcat:
+        max-active: 4
+        max-idle: 2
+        min-idle: 1
+        test-on-borrow: true
+        validation-query: select 1
+        time-between-eviction-runs-millis: 360000
+        initial-size: 5
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7777/eureka/
+  #      defaultZone: http://eureka.codelogger.org/eureka/
+  instance:
+    prefer-ip-address: true
+  server:
+    eviction-interval-timer-in-ms: 1000
+
+

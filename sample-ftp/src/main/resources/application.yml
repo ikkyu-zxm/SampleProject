@@ -1,0 +1,24 @@
+server:
+  port: ${PORT:50102}
+#  port: ${PORT:50102}
+spring:
+  application:
+    name: local-ftp
+
+sample:
+  ftp:
+    config:
+      enabled: true
+      password: 971003
+      username: ikkyu
+      url: 192.168.1.13
+      port: 21
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:7777/eureka/
+  #      defaultZone: http://eureka.codelogger.org/eureka/
+  instance:
+    prefer-ip-address: true
+  server:
+    eviction-interval-timer-in-ms: 1000

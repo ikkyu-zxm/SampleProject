@@ -14,9 +14,11 @@ import javax.persistence.*;
 public class Cat {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
     private String userName;
     private String sex;
     private Integer age;
+
+
 }

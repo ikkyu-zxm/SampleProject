@@ -5,4 +5,7 @@ package cn.ikkyu.sample.test.service;
  * @Date 2019/12/23 22:25
  */
 public interface TestService {
+
+    void testTransaction();
+
 }

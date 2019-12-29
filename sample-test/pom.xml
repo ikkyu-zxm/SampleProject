@@ -3,22 +3,157 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>sample-base</artifactId>
         <groupId>ikkyu.xyz</groupId>
+        <artifactId>SampleProject</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>sample-test</artifactId>
-    <dependencies>
 
+    <properties>
+        <apache.cxf.version>3.2.7</apache.cxf.version>
+    </properties>
+
+    <dependencies>
         <dependency>
             <groupId>ikkyu.xyz</groupId>
             <artifactId>sample-base</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>compile</scope>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-lang3</artifactId>
+                    <groupId>org.apache.commons</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-spring-boot-starter-jaxws -->
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-spring-boot-starter-jaxws</artifactId>
+            <version>${apache.cxf.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-web</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-ws-security</artifactId>
+            <version>${apache.cxf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-tools-common</artifactId>
+            <version>${apache.cxf.version}</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>commons-lang3</artifactId>
+                    <groupId>org.apache.commons</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http-jetty</artifactId>
+            <version>${apache.cxf.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>wsdl4j</groupId>
+            <artifactId>wsdl4j</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.dom4j/dom4j -->
     </dependencies>
 
+    <build>
+        <plugins>
+            <!-- 打包插件 -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+           <!-- <plugin>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-codegen-plugin</artifactId>
+                <version>${apache.cxf.version}</version>
+                <executions>
+                    <execution>
+                        <id>generate-sources</id>
+                        <phase>generate-sources</phase>
+                        <configuration>
+                            <sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
+                            <wsdlOptions>
+                                <wsdlOption>
+                                    <wsdl>${project.basedir}/src/main/resources/wsdl/dev/MobileCodeWS.wsdl</wsdl>
+                                    <wsdlLocation>classpath:wsdl/dev/MobileCodeWS.wsdl</wsdlLocation>
+                                </wsdlOption>
+
+                                &lt;!&ndash;<wsdlOption>
+                                    <wsdl>${project.basedir}/src/main/resources/wsdl/dev/businessMode.wsdl</wsdl>
+                                    <wsdlLocation>classpath:wsdl/dev/businessMode.wsdl</wsdlLocation>
+                                </wsdlOption>
+                                <wsdlOption>
+                                    <wsdl>${project.basedir}/src/main/resources/wsdl/dev/goodsBasic.wsdl</wsdl>
+                                    <wsdlLocation>classpath:wsdl/goodsCreate.wsdl</wsdlLocation>
+                                </wsdlOption>
+                                <wsdlOption>
+                                    <wsdl>${project.basedir}/src/main/resources/wsdl/dev/goodsPrice.wsdl</wsdl>
+                                    <wsdlLocation>classpath:wsdl/dev/barcode.wsdl</wsdlLocation>
+                                </wsdlOption>&ndash;&gt;
+                            </wsdlOptions>
+                        </configuration>
+                        <goals>
+                            <goal>wsdl2java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>-->
+
+            <plugin>
+                <groupId>org.jvnet.jaxb2.maven2</groupId>
+                <artifactId>maven-jaxb2-plugin</artifactId>
+                <version>0.12.3</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                <schemaLanguage>WSDL</schemaLanguage>
+                <generatePackage>cn.ikkyu.sample.test.webservice</generatePackage>
+                <generateDirectory>${basedir}/src/main/java</generateDirectory>
+                <schemas>
+                    <schema>
+                        <fileset>
+                            <!-- Defaults to schemaDirectory. -->
+                            <directory>${basedir}/src/main/resources/wsdl.dev</directory>
+                            <!-- Defaults to schemaIncludes. -->
+                            <includes>
+                                <include>*.wsdl</include>
+                            </includes>
+                            <!-- Defaults to schemaIncludes -->
+                            <!--<excludes>-->
+                            <!--<exclude>*.xs</exclude>-->
+                            <!--</excludes>-->
+                        </fileset>
+                        <!--<url>http://localhost:8080/ws/countries.wsdl</url>-->
+                    </schema>
+                </schemas>
+            </configuration>
+            </plugin>
+        </plugins>
+        <finalName>${project.artifactId}</finalName>
+    </build>
 
 </project>

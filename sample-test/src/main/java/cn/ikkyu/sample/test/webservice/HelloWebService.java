@@ -1,9 +1,11 @@
 package cn.ikkyu.sample.test.webservice;
 
+import cn.ikkyu.sample.test.domain.GoodsRegisterQualificationRespVO;
+
 import javax.jws.WebMethod;
-import javax.jws.WebParam;
 import javax.jws.WebResult;
 import javax.jws.WebService;
+import java.util.List;
 
 /**
  * @author xinming
@@ -15,6 +17,6 @@ public interface HelloWebService {
 
     @WebMethod(operationName = "hi")
     @WebResult(name="ret")
-    String hello(@WebParam(name = "str") String str);
+    String hello(List<GoodsRegisterQualificationRespVO> respVOList);
 
 }

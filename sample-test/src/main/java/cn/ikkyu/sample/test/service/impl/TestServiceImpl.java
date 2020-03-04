@@ -3,6 +3,8 @@ package cn.ikkyu.sample.test.service.impl;
 import cn.ikkyu.sample.test.dao.po.Cat;
 import cn.ikkyu.sample.test.dao.repository.CatRepository;
 import cn.ikkyu.sample.test.service.TestService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -18,6 +20,13 @@ public class TestServiceImpl implements TestService {
 
     @Resource
     private CatRepository catRepository;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
+
+
+    private static final String OK = "OK";
+
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void testTransactional(Cat cat) {
@@ -45,4 +54,50 @@ public class TestServiceImpl implements TestService {
 
         testTransactional(cat2);
     }
+
+    @Override
+    public String saveString(String name, String value) {
+
+        redisTemplate.opsForValue().set(name, value);
+        return OK;
+    }
+
+    @Override
+    public String saveHash(String hkey ,String key ,String value) {
+        redisTemplate.opsForHash().put(hkey,key,value);
+        return OK;
+    }
+
+    @Override
+    public String saveSet(String key ,Object[] values) {
+        redisTemplate.opsForSet().add(key, values);
+        return OK;
+    }
+
+    @Override
+    public String saveSortedSet(String key, String value, double sort) {
+        redisTemplate.opsForZSet().add(key, value, sort);
+        return OK;
+    }
+
+
+    @Override
+    public String incrementSortedSet(String key, String value, double sort) {
+        redisTemplate.opsForZSet().incrementScore(key, value, sort);
+        return OK;
+    }
+
+
+    @Override
+    public String incrementString(String name) {
+        redisTemplate.opsForValue().increment(name, 1);
+        return OK;
+    }
+
+    @Override
+    public String incrementHash(String hkey ,String key) {
+        redisTemplate.opsForHash().increment(hkey,key,1);
+        return OK;
+    }
+
 }

@@ -1,17 +1,16 @@
 package cn.ikkyu.sample.test.webservice;
 
+import cn.ikkyu.sample.test.domain.GoodsRegisterQualificationRespVO;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
-import javax.jws.WebParam;
 import javax.jws.WebService;
+import java.util.List;
 
 /**
  * @author xinming
  * @Date 2019/12/29 14:45
  */
 @Slf4j
-@Component
 @WebService(serviceName = "HelloWebService",
         targetNamespace = "http://webservice.test.sample.ikkyu.cn/",
         endpointInterface = "cn.ikkyu.sample.test.webservice.HelloWebService")
@@ -20,8 +19,9 @@ public class HelloWebServiceImpl implements HelloWebService {
     @Override
 //    @WebMethod(operationName = "hi")
 //    @WebResult(name="ret")
-    public String hello(@WebParam(name = "str") String str) {
-        log.info("invoke method hello--------{}", str);
+    public String hello(List<GoodsRegisterQualificationRespVO> respVOList) {
+        log.info("-------------hello");
+        log.info("invoke method hello--------{}", respVOList);
         return "hello webService";
     }
 }

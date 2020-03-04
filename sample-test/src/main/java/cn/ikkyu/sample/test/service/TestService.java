@@ -8,4 +8,19 @@ public interface TestService {
 
     void testTransaction();
 
+
+    String saveString(String name , String value);
+
+    String saveHash(String hkey ,String key ,String value);
+
+    String saveSet(String key ,Object[] values);
+
+    String saveSortedSet(String key, String value, double sort);
+
+    String incrementSortedSet(String key, String value, double sort);
+
+    String incrementString(String name);
+
+    String incrementHash(String hkey ,String key);
+
 }

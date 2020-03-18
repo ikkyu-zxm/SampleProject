@@ -1,5 +1,7 @@
 package cn.ikkyu.sample.test.webservice;
 
+import cn.ikkyu.sample.test.domain.GoodsQualificationType;
+import com.alibaba.fastjson.JSON;
 import org.apache.cxf.frontend.ClientProxy;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.apache.cxf.transport.http.HTTPConduit;
@@ -55,7 +57,10 @@ public class WebServiceTest {
 
     @Test
     public void webServiceUtilTest() {
-
+        GoodsQualificationType[] values = GoodsQualificationType.values();
+        System.out.println(JSON.toJSONString(values));
+        GoodsQualificationType value = values[1];
+        System.out.println(value.getDesc());
 
     }
 

@@ -24,7 +24,7 @@ public interface MobileCodeWSHttpPost {
 
 
     /**
-     * <br /><h3>»ñµÃ¹úÄÚÊÖ»úºÅÂë¹éÊôµØÊ¡·Ý¡¢µØÇøºÍÊÖ»ú¿¨ÀàÐÍÐÅÏ¢</h3><p>ÊäÈë²ÎÊý£ºmobileCode = ×Ö·û´®£¨ÊÖ»úºÅÂë£¬×îÉÙÇ°7Î»Êý×Ö£©£¬userID = ×Ö·û´®£¨ÉÌÒµÓÃ»§ID£© Ãâ·ÑÓÃ»§Îª¿Õ×Ö·û´®£»·µ»ØÊý¾Ý£º×Ö·û´®£¨ÊÖ»úºÅÂë£ºÊ¡·Ý ³ÇÊÐ ÊÖ»ú¿¨ÀàÐÍ£©¡£</p><br />
+     * <br /><h3>èŽ·å¾—å›½å†…æ‰‹æœºå·ç å½’å±žåœ°çœä»½ã€åœ°åŒºå’Œæ‰‹æœºå¡ç±»åž‹ä¿¡æ¯</h3><p>è¾“å…¥å‚æ•°ï¼šmobileCode = å­—ç¬¦ä¸²ï¼ˆæ‰‹æœºå·ç ï¼Œæœ€å°‘å‰7ä½æ•°å­—ï¼‰ï¼ŒuserID = å­—ç¬¦ä¸²ï¼ˆå•†ä¸šç”¨æˆ·IDï¼‰ å…è´¹ç”¨æˆ·ä¸ºç©ºå­—ç¬¦ä¸²ï¼›è¿”å›žæ•°æ®ï¼šå­—ç¬¦ä¸²ï¼ˆæ‰‹æœºå·ç ï¼šçœä»½ åŸŽå¸‚ æ‰‹æœºå¡ç±»åž‹ï¼‰ã€‚</p><br />
      * 
      * @param mobileCode
      * @param userID
@@ -40,7 +40,7 @@ public interface MobileCodeWSHttpPost {
         String userID);
 
     /**
-     * <br /><h3>»ñµÃ¹úÄÚÊÖ»úºÅÂë¹éÊôµØÊý¾Ý¿âÐÅÏ¢</h3><p>ÊäÈë²ÎÊý£ºÎÞ£»·µ»ØÊý¾Ý£ºÒ»Î¬×Ö·û´®Êý×é£¨Ê¡·Ý ³ÇÊÐ ¼ÇÂ¼ÊýÁ¿£©¡£</p><br />
+     * <br /><h3>èŽ·å¾—å›½å†…æ‰‹æœºå·ç å½’å±žåœ°æ•°æ®åº“ä¿¡æ¯</h3><p>è¾“å…¥å‚æ•°ï¼šæ— ï¼›è¿”å›žæ•°æ®ï¼šä¸€ç»´å­—ç¬¦ä¸²æ•°ç»„ï¼ˆçœä»½ åŸŽå¸‚ è®°å½•æ•°é‡ï¼‰ã€‚</p><br />
      * 
      * @return
      *     returns cn.ikkyu.sample.test.webservice.ArrayOfString

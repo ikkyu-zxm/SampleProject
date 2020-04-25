@@ -13,6 +13,7 @@
         <module>sample-test</module>
         <module>sample-base</module>
         <module>mode-base</module>
+        <module>service</module>
     </modules>
     <!--springboot的父类-->
     <parent>

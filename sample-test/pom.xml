@@ -89,6 +89,16 @@
             <scope>test</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.dom4j/dom4j -->
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

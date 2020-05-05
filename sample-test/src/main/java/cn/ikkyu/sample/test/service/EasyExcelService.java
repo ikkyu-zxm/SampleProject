@@ -1,5 +1,7 @@
 package cn.ikkyu.sample.test.service;
 
+import java.io.IOException;
+
 /**
  * @author xinming
  * @Date 2020/3/4 21:05
@@ -12,5 +14,7 @@ public interface EasyExcelService {
      */
     void testEasyExcelImportExport(String dataUrl,String outUrl);
 
+
+    void testEasyExcelImportExportByModel(String dataUrl,String outUrl) throws IOException;
 
 }

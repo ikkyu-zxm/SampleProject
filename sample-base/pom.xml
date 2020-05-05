@@ -55,7 +55,10 @@
             <scope>runtime</scope>
         </dependency>
         <!--        数据库连接-->
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

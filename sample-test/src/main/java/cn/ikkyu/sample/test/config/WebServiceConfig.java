@@ -2,8 +2,6 @@ package cn.ikkyu.sample.test.config;
 
 import cn.ikkyu.sample.test.webservice.HelloWebService;
 import cn.ikkyu.sample.test.webservice.HelloWebServiceImpl;
-import cn.ikkyu.sample.test.webservice.demand.DemandWS;
-import cn.ikkyu.sample.test.webservice.demand.DemandWSImpl;
 import lombok.Data;
 import org.apache.cxf.Bus;
 import org.apache.cxf.jaxws.EndpointImpl;
@@ -47,20 +45,20 @@ public class WebServiceConfig {
         return endpoint;
     }
 
-
-    @Bean
-    @Order(HIGHEST_PRECEDENCE)
-    public DemandWS getDemandService() {
-        return new DemandWSImpl();
-    }
-
-    @Bean
-    @Autowired
-    public Endpoint endpointDemand(DemandWS demandWS) {
-        EndpointImpl endpoint = new EndpointImpl(bus, demandWS);
-        endpoint.publish("/demandTest");
-        return endpoint;
-    }
+//
+//    @Bean
+//    @Order(HIGHEST_PRECEDENCE)
+//    public DemandWS getDemandService() {
+//        return new DemandWSImpl();
+//    }
+//
+//    @Bean
+//    @Autowired
+//    public Endpoint endpointDemand(DemandWS demandWS) {
+//        EndpointImpl endpoint = new EndpointImpl(bus, demandWS);
+//        endpoint.publish("/demandTest");
+//        return endpoint;
+//    }
 
 
 }

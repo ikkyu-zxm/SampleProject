@@ -34,7 +34,7 @@ public class TestController {
         JSONObject jsonObject = JSON.parseObject(data);
         BackArchivesGoodsInfoRespVO backArchivesGoodsInfoRespVO = JSON.parseObject(data, BackArchivesGoodsInfoRespVO.class);
 
-        log.info("JSONObject {}",JSON.toJSONString(backArchivesGoodsInfoRespVO));
+        log.info("JSONObject: {}",JSON.toJSONString(backArchivesGoodsInfoRespVO));
 
     }
 

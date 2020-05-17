@@ -14,6 +14,9 @@
         <module>sample-base</module>
         <module>mode-base</module>
         <module>service</module>
+        <module>component</module>
+        <module>component/component-service-base</module>
+        <module>commnons</module>
     </modules>
     <!--springboot的父类-->
     <parent>
@@ -84,7 +87,6 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.8.1</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->

@@ -90,4 +90,10 @@ public class TestController {
         return testService.incrementHash(hkey,key);
     }
 
+    @ApiOperation("testDelayer")
+    @GetMapping("testDelayer")
+    public Boolean testDelayer() {
+        testService.testTransaction();
+        return Boolean.TRUE;
+    }
 }

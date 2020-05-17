@@ -3,9 +3,11 @@ package cn.ikkyu.sample.test.service.impl;
 import cn.ikkyu.sample.test.dao.po.Cat;
 import cn.ikkyu.sample.test.dao.repository.CatRepository;
 import cn.ikkyu.sample.test.service.TestService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import xyz.ikkyu.component.service.base.service.TransactionOptDelayer;
 
 import javax.annotation.Resource;
 
@@ -13,6 +15,7 @@ import javax.annotation.Resource;
  * @author xinming
  * @Date 2019/12/23 22:25
  */
+@Slf4j
 @Service
 public class TestServiceImpl implements TestService {
 
@@ -22,6 +25,7 @@ public class TestServiceImpl implements TestService {
 //    @Autowired
 //    private RedisTemplate redisTemplate;
 
+    private TransactionOptDelayer delayer = new TransactionOptDelayer();
 
     private static final String OK = "OK";
 
@@ -29,6 +33,9 @@ public class TestServiceImpl implements TestService {
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void testTransactional(Cat cat) {
         catRepository.save(cat);
+        delayer.executeAfterTransactionCommit(() -> {
+            log.info("事务执行完成");
+        });
     }
 
     @Override
@@ -48,7 +55,6 @@ public class TestServiceImpl implements TestService {
         cat2.setSex("m");
         cat2.setUserName("cat1");
 
-        int i = 1 / 0;
 
         testTransactional(cat2);
     }

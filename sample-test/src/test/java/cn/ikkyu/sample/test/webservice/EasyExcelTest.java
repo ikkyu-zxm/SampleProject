@@ -1,10 +1,16 @@
 package cn.ikkyu.sample.test.webservice;
 
+import cn.ikkyu.sample.test.domain.ChannelExcelModel;
+import cn.ikkyu.sample.test.excel.BaseExcelListener;
 import cn.ikkyu.sample.test.service.impl.EasyExcelServiceImpl;
+import com.alibaba.excel.EasyExcel;
+import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.poi.openxml4j.util.ZipSecureFile;
 import org.junit.Test;
 
-import java.io.IOException;
+import java.io.*;
+import java.util.List;
 
 /**
  * @author xinming
@@ -41,6 +47,25 @@ public class EasyExcelTest {
     public void test() {
         int i = 5 / 0;
         System.out.println(i);
+    }
+
+
+    @Test
+    public void testBaseExcelListener() {
+        try {
+            InputStream inputStream = new BufferedInputStream(new FileInputStream("F:\\tmp\\WineAdviser\\渠道汇总数据4.9.xlsx"));
+
+            ZipSecureFile.setMinInflateRatio(-1.0d);
+
+            //实例化实现了AnalysisEventListener接口的类
+            BaseExcelListener listener = new BaseExcelListener<ChannelExcelModel>();
+
+            EasyExcel.read(inputStream,ChannelExcelModel.class, listener).sheet(0).doRead();
+            List<ChannelExcelModel> dataList = listener.getDataList();
+            System.out.println(JSON.toJSONString(dataList));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 
 }

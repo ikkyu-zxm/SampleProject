@@ -141,23 +141,6 @@ public class EasyExcelServiceImpl implements EasyExcelService {
 
 
 
-    @Test
-    public void testBaseExcelListener() {
-        try {
-            InputStream inputStream = new BufferedInputStream(new FileInputStream("F:\\tmp\\WineAdviser\\渠道汇总数据4.9.xlsx"));
-
-            ZipSecureFile.setMinInflateRatio(-1.0d);
-
-            //实例化实现了AnalysisEventListener接口的类
-            BaseExcelListener listener = new BaseExcelListener<ChannelExcelModel>();
-
-            EasyExcel.read(inputStream,ChannelExcelModel.class, listener).sheet(0).doRead();
-            List<ChannelExcelModel> dataList = listener.getDataList();
-            System.out.println(JSON.toJSONString(dataList));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
 
 
     public <T extends BaseRowModel> String persistenceExcel(List<?> data, Class<T> clazz, String path) {

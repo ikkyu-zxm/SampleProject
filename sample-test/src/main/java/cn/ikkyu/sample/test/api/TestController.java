@@ -35,7 +35,7 @@ public class TestController {
         JSONObject jsonObject = JSON.parseObject(data);
         BackArchivesGoodsInfoRespVO backArchivesGoodsInfoRespVO = JSON.parseObject(data, BackArchivesGoodsInfoRespVO.class);
 
-        log.info("JSONObject {}",JSON.toJSONString(backArchivesGoodsInfoRespVO));
+        log.info("JSONObject: {}",JSON.toJSONString(backArchivesGoodsInfoRespVO));
 
     }
 
@@ -102,4 +102,10 @@ public class TestController {
         return testService.incrementHash(hkey,key);
     }
 
+    @ApiOperation("testDelayer")
+    @GetMapping("testDelayer")
+    public Boolean testDelayer() {
+        testService.testTransaction();
+        return Boolean.TRUE;
+    }
 }

@@ -4,6 +4,7 @@ import cn.ikkyu.sample.test.util.CodeGeneratorUtils;
 import com.alibaba.fastjson.JSON;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -11,7 +12,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.*;
-import java.util.regex.Pattern;
 
 /**
  * @author xinming
@@ -175,8 +175,7 @@ public class ThreadTest {
 
     @Test
     public void regularTest() {
-        System.out.println(Pattern.matches("^86\\d*$", "8617628044619"));
-        System.out.println("8617628044619".substring(2));
+        System.out.println(StringUtils.upperCase("cat"));
     }
 
 

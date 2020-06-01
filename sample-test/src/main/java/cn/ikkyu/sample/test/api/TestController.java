@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author xinming
@@ -43,6 +44,17 @@ public class TestController {
     public String test() {
         log.info("--------------");
        return "hello";
+    }
+
+    @ApiOperation("测试传输")
+    @PostMapping("testMap")
+    public String test(@RequestBody Map<String,Object> map) {
+        Object list = map.get("list");
+        if (list instanceof List) {
+            System.out.println(((List) list).get(0));
+        }
+        log.info("--------------");
+        return "hello";
     }
 
     @ApiOperation("test redis save string")

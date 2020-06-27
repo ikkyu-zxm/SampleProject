@@ -1,14 +1,15 @@
 package cn.ikkyu.sample.test.api;
 
+import cn.ikkyu.sample.test.domain.req.CatReqVO;
+import cn.ikkyu.sample.test.domain.resp.CatRespVO;
 import cn.ikkyu.sample.test.service.CatService;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
+import java.util.List;
 
 /**
  * @author xinming
@@ -39,6 +40,21 @@ public class CatController {
         }
 
         System.out.println(wholeStr);
+    }
+
+
+    @PostMapping("saveCat")
+    @ApiOperation(value = "保存cat",notes = "新明")
+    public Boolean saveCat(CatReqVO reqVO) {
+        return catService.saveCat(reqVO);
+    }
+
+
+
+    @GetMapping("searchByName")
+    @ApiOperation(value = "通过名称查询",notes = "新明")
+    public List<CatRespVO> searchByName(@RequestParam("name") String name) {
+        return catService.searchByName(name);
     }
 
 }

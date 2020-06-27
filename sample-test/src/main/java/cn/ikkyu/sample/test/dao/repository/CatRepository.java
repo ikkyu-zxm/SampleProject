@@ -4,6 +4,7 @@ import cn.ikkyu.sample.test.dao.po.Cat;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -18,4 +19,11 @@ public interface CatRepository extends JpaRepository<Cat,Long> {
      */
     @Query(value = "explain select count(*) from Cat",nativeQuery = true)
     Map<String,Object> getCount();
+
+    /**
+     * 通过名称查询
+     * @param username
+     * @return
+     */
+    List<Cat> findByUserNameLike(String username);
 }

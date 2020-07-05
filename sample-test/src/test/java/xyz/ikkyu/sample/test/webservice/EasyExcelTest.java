@@ -43,6 +43,13 @@ public class EasyExcelTest {
         log.info("测试结束  总共用时 {}", System.currentTimeMillis() - startTime);
     }
 
+
+    @Test
+    public void moreMultiMeterExportTest() {
+        new EasyExcelServiceImpl().moreMultiMeterExportTest("F:\\tem\\WineAdviser\\test.xlsx");
+    }
+
+
     @Test
     public void test() {
         int i = 5 / 0;

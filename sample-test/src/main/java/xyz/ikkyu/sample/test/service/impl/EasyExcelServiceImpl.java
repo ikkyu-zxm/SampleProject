@@ -1,19 +1,24 @@
 package xyz.ikkyu.sample.test.service.impl;
 
-import xyz.ikkyu.sample.test.domain.GoodsBrandConfigExcelModel;
-import xyz.ikkyu.sample.test.excel.GoodsBrandConfigExcelListener;
-import xyz.ikkyu.sample.test.service.EasyExcelService;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.ExcelWriter;
 import com.alibaba.excel.metadata.BaseRowModel;
 import com.alibaba.excel.metadata.Sheet;
 import com.alibaba.excel.support.ExcelTypeEnum;
+import com.alibaba.excel.write.metadata.WriteSheet;
+import com.alibaba.excel.write.metadata.WriteTable;
+import com.alibaba.excel.write.metadata.WriteWorkbook;
 import com.alibaba.fastjson.JSON;
+import com.google.common.collect.Lists;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.openxml4j.util.ZipSecureFile;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import xyz.ikkyu.sample.test.domain.ChannelExcelModel;
+import xyz.ikkyu.sample.test.domain.GoodsBrandConfigExcelModel;
+import xyz.ikkyu.sample.test.excel.GoodsBrandConfigExcelListener;
+import xyz.ikkyu.sample.test.service.EasyExcelService;
 
 import java.io.*;
 import java.time.format.DateTimeFormatter;
@@ -67,6 +72,8 @@ public class EasyExcelServiceImpl implements EasyExcelService {
 
 //            Table table = new Table(1);
             writer.write0(outList, sheet1);
+            //推荐使用方法
+//            EasyExcel.write(dataUrl + "\\withHead.xlsx",)
             writer.finish();
 
         } catch (FileNotFoundException e) {
@@ -75,6 +82,54 @@ public class EasyExcelServiceImpl implements EasyExcelService {
             e.printStackTrace();
         }
 
+
+    }
+
+
+    @Override
+    public void moreMultiMeterExportTest(String outUrl) {
+
+        GoodsBrandConfigExcelModel brandConfigExcelModel = new GoodsBrandConfigExcelModel();
+
+        brandConfigExcelModel.setChildGoodsCode("商品编码");
+        brandConfigExcelModel.setChildGoodsName("商品名称");
+
+        ChannelExcelModel channelExcelModel = new ChannelExcelModel();
+        channelExcelModel.setChannelName("渠道名称");
+        channelExcelModel.setShopBn("渠道编码");
+
+        WriteSheet writeSheet = new WriteSheet();
+        writeSheet.setSheetNo(1);
+
+//        ExcelWriterSheetBuilder sheet = EasyExcel.write("outUrl").sheet("sheet1");
+//        sheet.doWrite(Lists.newArrayList(brandConfigExcelModel));
+//        sheet.doWrite(Lists.newArrayList(channelExcelModel));
+
+
+        WriteWorkbook writeWorkbook = new WriteWorkbook();
+        writeWorkbook.setFile(new File(outUrl));
+        ExcelWriter excelWriter = new ExcelWriter(writeWorkbook);
+
+        writeSheet.setSheetName("sheet1");
+//        writeSheet.setClazz(GoodsBrandConfigExcelModel.class);
+
+        WriteTable writeTable1 = new WriteTable();
+        writeTable1.setTableNo(1);
+        writeTable1.setClazz(GoodsBrandConfigExcelModel.class);
+
+        excelWriter.write(Lists.newArrayList(brandConfigExcelModel), writeSheet, writeTable1);
+
+        WriteTable writeTable2 = new WriteTable();
+        writeTable2.setTableNo(2);
+        writeTable2.setClazz(ChannelExcelModel.class);
+//        WriteSheet writeSheet2 = new WriteSheet();
+//        writeSheet2.setSheetNo(1);
+
+        excelWriter.write(Lists.newArrayList(channelExcelModel), writeSheet, writeTable2);
+        excelWriter.finish();
+
+
+//        EasyExcel.write(outUrl, GoodsBrandConfigExcelModel.class).sheet("sheet1").doWrite(Lists.newArrayList(brandConfigExcelModel));
 
     }
 

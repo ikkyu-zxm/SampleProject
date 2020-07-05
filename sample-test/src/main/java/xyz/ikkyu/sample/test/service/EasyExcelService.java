@@ -17,4 +17,7 @@ public interface EasyExcelService {
 
     void testEasyExcelImportExportByModel(String dataUrl,String outUrl) throws IOException;
 
+
+    void moreMultiMeterExportTest(String outUrl);
+
 }

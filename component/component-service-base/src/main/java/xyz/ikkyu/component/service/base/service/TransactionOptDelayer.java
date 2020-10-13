@@ -54,11 +54,7 @@ public class TransactionOptDelayer {
             executableMap = Maps.newHashMap();
             afterTransactionOpts.set(executableMap);
         }
-        Stack<Executable> executables = executableMap.get(transactionName);
-        if(executables ==null){
-            executables = new Stack<>();
-            executableMap.put(transactionName, executables);
-        }
+        Stack<Executable> executables = executableMap.computeIfAbsent(transactionName, k -> new Stack<>());
         return executables;
     }
 

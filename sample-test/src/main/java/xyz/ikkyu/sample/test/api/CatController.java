@@ -1,15 +1,16 @@
 package xyz.ikkyu.sample.test.api;
 
-import xyz.ikkyu.sample.test.domain.req.CatReqVO;
-import xyz.ikkyu.sample.test.domain.resp.CatRespVO;
-import xyz.ikkyu.sample.test.service.CatService;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import xyz.ikkyu.sample.test.domain.req.CatReqVO;
+import xyz.ikkyu.sample.test.domain.resp.CatRespVO;
+import xyz.ikkyu.sample.test.service.CatService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author xinming
@@ -51,10 +52,13 @@ public class CatController {
 
 
 
-    @GetMapping("searchByName")
+    @PostMapping("searchByName")
     @ApiOperation(value = "通过名称查询",notes = "新明")
-    public List<CatRespVO> searchByName(@RequestParam("name") String name) {
+    public List<CatRespVO> searchByName(@RequestBody() Map<String, String> paramMap) {
+        String name = paramMap.get("name");
+        List<CatRespVO> catRespVOS = catService.searchByName(name);
         return catService.searchByName(name);
+//        return new JsonResult<>(catRespVOS);
     }
 
 }

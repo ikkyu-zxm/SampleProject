@@ -1,12 +1,12 @@
 package xyz.ikkyu.sample.test.webservice;
 
-import xyz.ikkyu.sample.test.domain.GoodsQualificationType;
 import com.alibaba.fastjson.JSON;
 import org.apache.cxf.frontend.ClientProxy;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.apache.cxf.transport.http.HTTPConduit;
 import org.apache.cxf.transports.http.configuration.HTTPClientPolicy;
 import org.junit.Test;
+import xyz.ikkyu.sample.test.domain.GoodsQualificationType;
 
 import javax.xml.namespace.QName;
 

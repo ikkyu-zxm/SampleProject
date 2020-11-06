@@ -16,7 +16,8 @@ sample:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:7777/eureka/
+      defaultZone: http://localhost:7776/eureka/,http://localhost:7777/eureka/
+    register-with-eureka: true
   #      defaultZone: http://eureka.codelogger.org/eureka/
   instance:
     prefer-ip-address: true

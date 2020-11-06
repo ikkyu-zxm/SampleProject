@@ -1,15 +1,19 @@
 package xyz.ikkyu.sample.test.api;
 
-import xyz.ikkyu.sample.test.domain.BackArchivesGoodsInfoRespVO;
-import xyz.ikkyu.sample.test.service.TestService;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.tomcat.util.http.MimeHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import xyz.ikkyu.sample.test.domain.BackArchivesGoodsInfoRespVO;
+import xyz.ikkyu.sample.test.service.TestService;
 
+import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Field;
 import java.util.List;
 
 /**
@@ -96,4 +100,38 @@ public class TestController {
         testService.testTransaction();
         return Boolean.TRUE;
     }
+
+    @ApiOperation("changeHeaderTest")
+    @PostMapping(value = "changeHeaderTest"/*, headers = {"content-type=application/json", "Content-Length=63"}*/)
+    public Boolean changeHeaderTest(HttpServletRequest request, MultipartFile file) {
+        reflectSetparam(request, "aaa", "adfs");
+        return Boolean.TRUE;
+    }
+
+    /**
+     * 修改header信息，key-value键值对儿加入到header中
+     * @param request
+     * @param key
+     * @param value
+     */
+    private void reflectSetparam(HttpServletRequest request, String key, String value){
+        Class<? extends HttpServletRequest> requestClass = request.getClass();
+        System.out.println("request实现类="+requestClass.getName());
+        try {
+            Field request1 = requestClass.getDeclaredField("request");
+            request1.setAccessible(true);
+            Object o = request1.get(request);
+            Field coyoteRequest = o.getClass().getDeclaredField("coyoteRequest");
+            coyoteRequest.setAccessible(true);
+            Object o1 = coyoteRequest.get(o);
+            System.out.println("coyoteRequest实现类="+o1.getClass().getName());
+            Field headers = o1.getClass().getDeclaredField("headers");
+            headers.setAccessible(true);
+            MimeHeaders o2 = (MimeHeaders)headers.get(o1);
+            o2.addValue(key).setString(value);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

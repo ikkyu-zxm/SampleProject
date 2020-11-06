@@ -9,7 +9,7 @@ import lombok.Data;
 @Data
 public class CatRespVO {
     private Integer userId;
-    private String userName;
+    private String username;
     private String sex;
     private Integer age;
 }

@@ -10,6 +10,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>sample-base</artifactId>
+    <packaging>pom</packaging>
+    <properties>
+        <seata.version>1.4.2</seata.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -97,6 +101,24 @@
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger-ui</artifactId>
             <version>2.7.0</version>
+        </dependency>
+
+        <!--seata-->
+        <dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-seata</artifactId>
+            <version>2.2.0.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <artifactId>seata-all</artifactId>
+                    <groupId>io.seata</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.seata</groupId>
+            <artifactId>seata-all</artifactId>
+            <version>1.4.2</version>
         </dependency>
 
     </dependencies>

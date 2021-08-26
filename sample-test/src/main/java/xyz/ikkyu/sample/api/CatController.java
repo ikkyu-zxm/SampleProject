@@ -3,9 +3,9 @@ package xyz.ikkyu.sample.api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import xyz.ikkyu.sample.test.domain.req.CatReqVO;
-import xyz.ikkyu.sample.test.domain.resp.CatRespVO;
-import xyz.ikkyu.sample.test.service.CatService;
+import xyz.ikkyu.sample.domain.req.CatReqVO;
+import xyz.ikkyu.sample.domain.resp.CatRespVO;
+import xyz.ikkyu.sample.service.CatService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedReader;

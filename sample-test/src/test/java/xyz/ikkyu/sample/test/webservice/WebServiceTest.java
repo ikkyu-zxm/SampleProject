@@ -6,7 +6,10 @@ import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.apache.cxf.transport.http.HTTPConduit;
 import org.apache.cxf.transports.http.configuration.HTTPClientPolicy;
 import org.junit.Test;
-import xyz.ikkyu.sample.test.domain.GoodsQualificationType;
+import xyz.ikkyu.sample.domain.GoodsQualificationType;
+import xyz.ikkyu.sample.webservice.MobileCodeWS;
+import xyz.ikkyu.sample.webservice.MobileCodeWSHttpGet;
+import xyz.ikkyu.sample.webservice.MobileCodeWSSoap;
 
 import javax.xml.namespace.QName;
 

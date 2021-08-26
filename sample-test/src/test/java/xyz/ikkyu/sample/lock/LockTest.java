@@ -1,6 +1,7 @@
 package xyz.ikkyu.sample.lock;
 
 import base.xyz.ikkyu.lock.RedisDistributedLock;
+import com.google.common.collect.Lists;
 import io.github.swagger2markup.GroupBy;
 import io.github.swagger2markup.Language;
 import io.github.swagger2markup.Swagger2MarkupConfig;
@@ -19,7 +20,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.concurrent.*;
+import java.util.stream.Collectors;
 
 /**
  * @author xinming
@@ -79,4 +82,13 @@ public class LockTest {
 
         converter.toFolder(outputFile);
     }
+
+
+    @Test
+    public void testStream() {
+        List<String> collect = Lists.newArrayList("1", "2","3","4","5","6","7","8","9","10")
+                .stream().skip(5).limit(5).collect(Collectors.toList());
+        System.out.println(collect);
+    }
+
 }

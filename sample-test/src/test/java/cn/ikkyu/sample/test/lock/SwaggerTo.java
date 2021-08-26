@@ -1,6 +1,5 @@
 package cn.ikkyu.sample.test.lock;
 
-import cn.ikkyu.sample.test.TestServiceApplication;
 import io.github.swagger2markup.GroupBy;
 import io.github.swagger2markup.Language;
 import io.github.swagger2markup.Swagger2MarkupConfig;
@@ -11,6 +10,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import xyz.ikkyu.sample.TestServiceApplication;
 
 import java.net.MalformedURLException;
 import java.net.URL;

@@ -1,10 +1,32 @@
 server:
-  port: ${PORT:50102}
+  port: ${PORT:8288}
 #  port: ${PORT:50102}
 spring:
   application:
     name: local-ftp
-
+  jpa:
+    database: mysql
+    generate-ddl: true
+    open-in-view: false
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+  #      naming:
+  #        physical-strategy: base.xyz.ikkyu.util.UnderscoreNameCustomizer
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?createDatabaseIfNotExist=true&useSSL=false&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: root
+    driverClassName: com.mysql.jdbc.Driver
+    initialSize: 5  #初始建立连接数量
+    minIdle: 5  #最小连接数量
+    maxActive: 20 #最大连接数量
+    maxWait: 10000  #获取连接最大等待时间，毫秒
+    testOnBorrow: true #申请连接时检测连接是否有效
+    testOnReturn: false #归还连接时检测连接是否有效
+    timeBetweenEvictionRunsMillis: 60000 #配置间隔检测连接是否有效的时间（单位是毫秒）
+    minEvictableIdleTimeMillis: 300000  #连接在连接池的最小生存时间（毫秒）
 sample:
   ftp:
     config:
@@ -16,7 +38,7 @@ sample:
 eureka:
   client:
     service-url:
-      defaultZone: http://localhost:7776/eureka/,http://localhost:7777/eureka/
+      defaultZone: http://localhost:7777/eureka
     register-with-eureka: true
   #      defaultZone: http://eureka.codelogger.org/eureka/
   instance:

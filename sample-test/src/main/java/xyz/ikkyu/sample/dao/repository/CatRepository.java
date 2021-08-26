@@ -1,5 +1,6 @@
 package xyz.ikkyu.sample.dao.repository;
 
+import org.springframework.stereotype.Repository;
 import xyz.ikkyu.sample.dao.po.Cat;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,6 +12,7 @@ import java.util.Map;
  * @author xinming
  * @Date 2019/12/23 22:30
  */
+@Repository
 public interface CatRepository extends JpaRepository<Cat,Long> {
 
     /**

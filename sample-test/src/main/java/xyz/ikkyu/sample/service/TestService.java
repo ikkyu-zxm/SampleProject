@@ -6,7 +6,7 @@ package xyz.ikkyu.sample.service;
  */
 public interface TestService {
 
-    void testTransaction();
+    void testTransaction(Integer id);
 
 
     String saveString(String name , String value);

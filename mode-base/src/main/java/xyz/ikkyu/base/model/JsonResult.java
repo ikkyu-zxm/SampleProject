@@ -1,34 +1,34 @@
 package xyz.ikkyu.base.model;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+//import com.fasterxml.jackson.annotation.JsonIgnore;
+//import io.swagger.annotations.ApiModel;
+//import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(
-        description = "RPC调用结果"
-)
+//@ApiModel(
+//        description = "RPC调用结果"
+//)
 public class JsonResult<T> {
-    @ApiModelProperty(
-            value = "服务器RPC响应code",
-            example = "200"
-    )
+//    @ApiModelProperty(
+//            value = "服务器RPC响应code",
+//            example = "200"
+//    )
     private int code;
-    @ApiModelProperty(
-            value = "执行结果描述",
-            example = "success"
-    )
+//    @ApiModelProperty(
+//            value = "执行结果描述",
+//            example = "success"
+//    )
     private String msg;
-    @ApiModelProperty(
-            value = "服务器结果返回时的 Unix timestamp,单位毫秒",
-            example = "1356019200000"
-    )
+//    @ApiModelProperty(
+//            value = "服务器结果返回时的 Unix timestamp,单位毫秒",
+//            example = "1356019200000"
+//    )
     private long ts;
-    @ApiModelProperty(
-            name = "data",
-            value = "响应结果",
-            example = "{}"
-    )
+//    @ApiModelProperty(
+//            name = "data",
+//            value = "响应结果",
+//            example = "{}"
+//    )
     private T data;
 
     public JsonResult(int code, String msg) {
@@ -48,7 +48,7 @@ public class JsonResult<T> {
         this.data = data;
     }
 
-    @JsonIgnore
+//    @JsonIgnore
     public boolean isOK() {
         return this.code == 200 || this.code == 0;
     }

@@ -1,7 +1,5 @@
 package xyz.ikkyu.sample.api;
 
-import xyz.ikkyu.sample.service.TestService;
-import xyz.ikkyu.sample.domain.BackArchivesGoodsInfoRespVO;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import io.swagger.annotations.Api;
@@ -11,8 +9,8 @@ import org.apache.tomcat.util.http.MimeHeaders;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import xyz.ikkyu.sample.test.domain.BackArchivesGoodsInfoRespVO;
-import xyz.ikkyu.sample.test.service.TestService;
+import xyz.ikkyu.sample.domain.BackArchivesGoodsInfoRespVO;
+import xyz.ikkyu.sample.service.TestService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Field;
@@ -110,8 +108,9 @@ public class TestController {
 
     @ApiOperation("testDelayer")
     @GetMapping("testDelayer")
-    public Boolean testDelayer() {
-        testService.testTransaction();
+    public Boolean testDelayer(@RequestParam("id") Integer id) {
+        testService.testTransaction(id);
+        testService.testTransaction(id + 1);
         return Boolean.TRUE;
     }
 

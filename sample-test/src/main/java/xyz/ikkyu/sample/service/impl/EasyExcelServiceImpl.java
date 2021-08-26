@@ -1,8 +1,5 @@
 package xyz.ikkyu.sample.service.impl;
 
-import xyz.ikkyu.sample.domain.GoodsBrandConfigExcelModel;
-import xyz.ikkyu.sample.excel.GoodsBrandConfigExcelListener;
-import xyz.ikkyu.sample.service.EasyExcelService;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.EasyExcelFactory;
 import com.alibaba.excel.ExcelWriter;
@@ -18,10 +15,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.poi.openxml4j.util.ZipSecureFile;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
-import xyz.ikkyu.sample.test.domain.ChannelExcelModel;
-import xyz.ikkyu.sample.test.domain.GoodsBrandConfigExcelModel;
-import xyz.ikkyu.sample.test.excel.GoodsBrandConfigExcelListener;
-import xyz.ikkyu.sample.test.service.EasyExcelService;
+import xyz.ikkyu.sample.domain.ChannelExcelModel;
+import xyz.ikkyu.sample.domain.GoodsBrandConfigExcelModel;
+import xyz.ikkyu.sample.excel.GoodsBrandConfigExcelListener;
+import xyz.ikkyu.sample.service.EasyExcelService;
 
 import java.io.*;
 import java.time.format.DateTimeFormatter;

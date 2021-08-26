@@ -39,24 +39,18 @@ public class TestServiceImpl implements TestService {
     }
 
     @Override
-    @Transactional(propagation = Propagation.REQUIRED)
-    public void testTransaction() {
+    @Transactional()
+    public void testTransaction(Integer id ) {
 
         Cat cat1 = new Cat();
-        cat1.setUserId(1);
+        cat1.setUserId(id);
         cat1.setAge(1);
         cat1.setSex("m");
         cat1.setUserName("cat1");
         testTransactional(cat1);
-
-        Cat cat2 = new Cat();
-        cat2.setUserId(2);
-        cat2.setAge(2);
-        cat2.setSex("m");
-        cat2.setUserName("cat1");
-
-
-        testTransactional(cat2);
+        if (id % 2 == 0) {
+            int i = 1 / 0;
+        }
     }
 
     @Override
